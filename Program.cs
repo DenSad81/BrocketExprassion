@@ -8,7 +8,7 @@ class Program
 {
     static void Main(string[] args)
     {
-        string inputString = "()(";
+        string inputString = ")";
         char actualSign = ' ';
         char signOpen = '(';
         char signClose = ')';
@@ -20,16 +20,19 @@ class Program
             actualSign = inputString[i];
 
             if (actualSign == signOpen)
+            {
                 deep++;
 
-            if (actualSign == signClose)
+                if (deep > maxDeed)
+                    maxDeed = deep;
+            }
+            else if (actualSign == signClose)
+            {
                 deep--;
 
-            if (deep < 0)
-                break;
-
-            if (deep > maxDeed)
-                maxDeed = deep;
+                if (deep < 0)
+                    break;
+            }
         }
 
         if (deep != 0)
